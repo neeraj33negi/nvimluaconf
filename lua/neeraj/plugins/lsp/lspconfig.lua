@@ -27,6 +27,9 @@ return {
 
 			opts.desc = "Show LSP definitions"
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+			--			keymap("n", "gd", function()
+			--				require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
+			--			end, opts)
 
 			opts.desc = "Show LSP implementations"
 			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
@@ -57,6 +60,11 @@ return {
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+			if client.name == "solargraph" then
+				client.server_capabilities.definitionProvider = true -- Force "definition" capability
+				client.server_capabilities.diagnostics = true
+			end
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
