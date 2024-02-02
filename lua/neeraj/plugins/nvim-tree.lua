@@ -64,5 +64,11 @@ return {
 		keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 		keymap.set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Switch to next tab" }) -- move to next opened tab
 		keymap.set("n", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Swith to previous tab" }) -- move back to previous tab
+		keymap.set(
+			"n",
+			"<leader>ef",
+			"<cmd>NvimTreeFocus<cr>",
+			{ desc = "Open the tree if it is closed, and then focus on the tree" }
+		) -- Open the tree if it is closed, and then focus on the tree
 	end,
 }
